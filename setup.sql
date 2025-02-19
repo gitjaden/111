@@ -1,63 +1,30 @@
--- SQL statements
--- in general there are two varieties of SQL statements
--- 1. Commands (affect any change in the DB (CUD ))
--- 2. Queries (Retrieven data for reading purposes)
-
--- MongoDB supports unstructured data
-
-CREATE TABLE IF NOT EXISTS user (
+--create our table
+CREATE TABLE IF NOT EXISTS task(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name VARCHAR(45),
-    last_name VARCHAR(45),
-    hobbies TEXT,
-    is_online BOOLEAN DEFAULT 0
+    name VARCHAR(64),
+    summary VARCHAR(128),
+    description TEXT,
+    is_done BOOLEAN DEFAULT 0
 );
 
--- dont forget the semi-colon! it waits for it to begin processing the request
-
--- dummy data:
-
--- CRUD(S)
--- CREATE
--- READ
--- UPDATE
--- DELETE
--- SCAN
-
--- CREATE
-INSERT INTO user (
-    first_name,
-    last_name,
-    hobbies
+--Dummy data
+INSERT INTO task (
+    name,
+    summary,
+    description
 ) VALUES
 (
-    "Jaden",
-    "Sherpa",
-    "Biking"
+    "Walk the dog",
+    "Take Fido out for a stroll",
+    "Make sure you go three laps around the park"
 ),
 (
-    "Bob",
-    "Martin",
-    "Writing books"
+    "Wash dishes",
+    "All the dishes must be washed before 10pm",
+    "Make sure to use the fancy new dish soap"
 ),
 (
-    "John",
-    "Doe",
-    "Playing golf and watching TV"
+    "Buy groceries",
+    "Go to the supermarket and buy groceries",
+    "We need: eggs, bacon and tomatoes"
 );
-
--- READ
-SELECT * FROM user WHERE id=1;
-
--- UPDATE
-UPDATE user SET
-    first_name="Tom",
-    last_name="Smith",
-    hobbies="Watching movies and listening to music"
-WHERE id=1;
-
--- DELETE
-DELETE FROM user WHERE id = 1;
-
--- SCAN
-SELECT * FROM user;
